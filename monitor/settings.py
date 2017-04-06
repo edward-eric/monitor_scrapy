@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'monitor.spiders'
 #USER_AGENT = 'monitor (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -41,7 +41,7 @@ COOKIES_ENABLED = True
 # Override the default request headers:
 DEFAULT_REQUEST_HEADERS = {
   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-  'Accept-Language': 'zh-CN,zh;q=0.8,en;q=0.6',
+  'Accept-Language': 'zh-CN',
 }
 
 # Enable or disable spider middlewares
@@ -52,9 +52,12 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'monitor.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
+   'monitor.middlewares.ProxyMiddleware': 100,
+   'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware' : None,
+    'monitor.middlewares.JavaScriptMiddleware': 543
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html

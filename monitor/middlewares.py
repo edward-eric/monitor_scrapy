@@ -6,6 +6,38 @@
 # http://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+from selenium import webdriver
+from scrapy.http import HtmlResponse
+from selenium.webdriver import DesiredCapabilities
+import time
+
+
+class ProxyMiddleware(object):
+
+    def process_request(self, request, spider):
+        print("设置代理")
+        # if '127.0.0.1' not in request.url:
+        #     request.meta['proxy'] = "http://proxy-sifi.rd.corpintra.net:3128"
+
+class JavaScriptMiddleware(object):
+
+    def process_request(self, request, spider):
+        if spider.name == "benz" :
+
+            print("PhantomJS is starting.....")
+            desired_capabilities = DesiredCapabilities.PHANTOMJS.copy()
+            desired_capabilities['phantomjs.page.customHeaders.Accept-Language'] = 'zh-CN'
+            driver = webdriver.PhantomJS(port=4444, desired_capabilities=desired_capabilities)
+            driver.get(request.url)
+            time.sleep(3)
+            driver.save_screenshot("screen.png")
+            print("访问 " + request.url)
+            body = driver.page_source
+            return HtmlResponse(driver.current_url, body=body, encoding='utf-8', request=request)
+        else:
+            return
+
+
 
 
 class MonitorSpiderMiddleware(object):
