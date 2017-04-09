@@ -25,7 +25,9 @@ class ExampleSpider(scrapy.Spider):
         return scrapy.FormRequest.from_response(response, callback=self.goto_landing)
 
     def goto_landing(self, response):
-        return scrapy.Request(url='https://me-cn.secure.mercedes-benz.com/wps/myportal', callback=self.parse_text)
+        return scrapy.Request(url='https://me-cn.secure.mercedes-benz.com/wps/myportal',
+                              headers=response.headers,
+                              callback=self.parse_text)
 
     def parse_text(self, response):
-        self.logger.info(response.text)
+        print(response.text)

@@ -53,10 +53,10 @@ DEFAULT_REQUEST_HEADERS = {
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
-   'monitor.middlewares.ProxyMiddleware': 100,
+   # 'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
+   # 'monitor.middlewares.ProxyMiddleware': 100,
    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware' : None,
-    'monitor.middlewares.JavaScriptMiddleware': 543
+   'monitor.middlewares.JavaScriptMiddleware': 543
 }
 
 # Enable or disable extensions
@@ -86,8 +86,8 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Enable and configure HTTP caching (disabled by default)
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-HTTPCACHE_ENABLED = True
-HTTPCACHE_EXPIRATION_SECS = 0
-HTTPCACHE_DIR = 'httpcache'
+# HTTPCACHE_ENABLED = True
+# HTTPCACHE_EXPIRATION_SECS = 0
+# HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
