@@ -18,8 +18,8 @@ class ExampleSpider(scrapy.Spider):
 
     def click_login(self, response):
         return scrapy.FormRequest.from_response(response,
-                                                formdata={'username': 'leiming.chen@daimler.com',
-                                                                                'password': 'Welcome2016'},
+                                                formdata={'username': 'xxxxx',
+                                                                                'password': 'xxxxxx'},
                                                 callback=self.after_login)
     def after_login(self, response):
         return scrapy.FormRequest.from_response(response, callback=self.goto_landing)
