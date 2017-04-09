@@ -12,3 +12,10 @@ class MonitorItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
+
+
+class registerItem(scrapy.Item):
+    id = scrapy.Field()
+    href = scrapy.Field()
+    val = scrapy.Field()
+    lastUpdated = scrapy.Field()
