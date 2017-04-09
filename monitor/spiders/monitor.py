@@ -12,7 +12,7 @@ class ExampleSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        login_url = response.xpath('//a[@id="loginButtonLandingpage"]/@href').extract_first()
+        login_url = response.xpath('//a[@id="loginButtonLandingpage"]/@data-layer-url').extract_first()
         if login_url:
             return scrapy.Request(url=login_url, callback=self.click_login)
 

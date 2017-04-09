@@ -55,8 +55,8 @@ DEFAULT_REQUEST_HEADERS = {
 DOWNLOADER_MIDDLEWARES = {
    # 'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': 110,
    # 'monitor.middlewares.ProxyMiddleware': 100,
-   'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware' : None,
-   'monitor.middlewares.JavaScriptMiddleware': 543
+   # 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware' : None,
+   # 'monitor.middlewares.JavaScriptMiddleware': 543
 }
 
 # Enable or disable extensions
